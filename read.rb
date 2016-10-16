@@ -4,7 +4,7 @@ require 'sinatra'
 require 'Nokogiri'
 
 get '/' do
-	
+
 	content_type :json, 'charset' => 'utf-8'
 	Struct.new("Toy", :id, :regon_number,:offence_date,:offence_time,:offence_place,:offence_type)
 # REGEX
@@ -20,8 +20,6 @@ file_contents.css('tr').each {
 	if(count>1) then
 		toy = Struct::Toy.new(data.css(".idnumber").text.force_encoding("utf-8"),data.css(".regonumber").text.force_encoding("utf-8"),data.css(".offencedate").text.force_encoding("utf-8"),data.css(".offencetime").text.force_encoding("utf-8"),data.css(".offenceplace").text.force_encoding("utf-8"),data.css(".offencetype").text.force_encoding("utf-8"))
 		toys << toy	
-		puts "_______________>"
-		puts count
 	end
 	count = count + 1	
 }
